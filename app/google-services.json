@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "969013392688",
+    "project_id": "fooddeliveryapp-abbgraduation",
+    "storage_bucket": "fooddeliveryapp-abbgraduation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969013392688:android:2364766c52cc05dc3584f5",
+        "android_client_info": {
+          "package_name": "com.natiqhaciyef.fooddeliveryapp_abbgraduation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969013392688-u2lia0o5p1d5qns8b67ks2s2p9rj8i1o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.natiqhaciyef.fooddeliveryapp_abbgraduation",
+            "certificate_hash": "ababf7e2a90e864b5d6453d4a4b2ddab842767a7"
+          }
+        },
+        {
+          "client_id": "969013392688-k6ooe2822j1ldm7f681msgops59egghf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIdgQzRIENrFkJslpP2_1sGxZvbp7Z_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969013392688-k6ooe2822j1ldm7f681msgops59egghf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
