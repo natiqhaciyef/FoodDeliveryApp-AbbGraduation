@@ -13,9 +13,14 @@
     <color name="mainBlue_light">#F300E0E0</color>
     <color name="mainRed">#f55a51</color>
     <color name="mainBlack">#181818</color>
+    <color name="mainGray">#7E7E7E</color>
     <color name="mainWhite">#FFFFFF</color>
-    <color name="mainBrown_light">#f3d3bc</color>
+    <color name="mainBrown_light">#FDDBC6</color>
+    <color name="mainYellowBrown_light">#FFDEC9</color>
+    <color name="mainBrown">#F3B382</color>
+    <color name="mainBrown_dark">#be8c62</color>
     <color name="mainOrange">#fe8c00</color>
     <color name="mainOrange_light">#F2F3A736</color>
+    <color name="mainOrange_extra_light">#F2FDC36D</color>
     <color name="mainGreen">#1FBA04</color>
 </resources>
