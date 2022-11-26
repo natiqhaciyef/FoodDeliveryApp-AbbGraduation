@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:background="@drawable/custom_register_selection_background"
         android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/userNameInputText"
+        app:layout_constraintBottom_toTopOf="@+id/userNameInputTextRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/userNameInputText"
+        android:id="@+id/userNameInputTextRegister"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerTextRegisterScreen" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/userEmailInputText"
+        android:id="@+id/userEmailInputTextRegister"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -106,10 +106,10 @@
         android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameInputText" />
+        app:layout_constraintTop_toBottomOf="@+id/userNameInputTextRegister" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/userPasswordInputText"
+        android:id="@+id/userPasswordInputTextRegister"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
@@ -124,7 +124,7 @@
         android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userEmailInputText" />
+        app:layout_constraintTop_toBottomOf="@+id/userEmailInputTextRegister" />
 
     <Button
         android:id="@+id/registerButton"
@@ -141,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordInputText" />
+        app:layout_constraintTop_toBottomOf="@+id/userPasswordInputTextRegister" />
 
     <TextView
         android:id="@+id/textQue"
@@ -163,7 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="96dp"
-        android:text="Sign in"
+        android:text="@string/sign_in_text"
         android:textStyle="bold"
         android:textColor="@color/mainRed"
         android:textSize="15sp"
