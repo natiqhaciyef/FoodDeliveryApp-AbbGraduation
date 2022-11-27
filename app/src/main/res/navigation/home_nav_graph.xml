@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_paymentFragment2"
+            app:destination="@id/paymentFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -27,4 +30,9 @@
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/paymentFragment2"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 </navigation>
