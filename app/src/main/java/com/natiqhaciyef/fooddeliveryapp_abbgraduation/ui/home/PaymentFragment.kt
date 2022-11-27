@@ -1,4 +1,4 @@
-package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register
+package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,17 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
-import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentForgotPasswordBinding
 
 
-class ForgotPasswordFragment : Fragment() {
-    private lateinit var binding: FragmentForgotPasswordBinding
+class PaymentFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 
-        return binding.root
+        return inflater.inflate(R.layout.fragment_payment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
