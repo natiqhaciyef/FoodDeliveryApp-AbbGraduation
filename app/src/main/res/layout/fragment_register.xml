@@ -43,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.749" />
+        app:layout_constraintVertical_bias="0.645" />
 
     <ImageView
         android:id="@+id/pizzaImageView1"
@@ -56,13 +56,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.381" />
 
     <TextView
         android:id="@+id/registerTextRegisterScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/lobster"
         android:text="@string/register_text"
         android:textColor="@color/mainBlack"
@@ -71,6 +71,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/infoRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lobster"
+        android:text="@string/register_info_text"
+        android:textColor="@color/mainBlack"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerTextRegisterScreen" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/userNameInputTextRegister"
@@ -88,7 +102,7 @@
         android:paddingEnd="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextRegisterScreen" />
+        app:layout_constraintTop_toBottomOf="@+id/infoRegister" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/userEmailInputTextRegister"

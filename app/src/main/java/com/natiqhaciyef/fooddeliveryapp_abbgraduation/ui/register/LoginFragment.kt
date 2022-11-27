@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -34,6 +35,10 @@ class LoginFragment : Fragment() {
             val email = binding.userEmailInputTextLogin.text.toString()
             val password = binding.userPasswordInputTextLogin.text.toString()
             loginButtonAction(email, password)
+        }
+
+        binding.goToRegister.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.registerFragment)
         }
     }
 

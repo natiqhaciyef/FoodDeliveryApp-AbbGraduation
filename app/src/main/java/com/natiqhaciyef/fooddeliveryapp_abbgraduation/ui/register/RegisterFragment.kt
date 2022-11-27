@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentRegisterBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.MainActivity
@@ -17,8 +20,7 @@ class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
@@ -27,11 +29,17 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
+
         binding.registerButton.setOnClickListener {
             val email = binding.userEmailInputTextRegister.text.toString()
             val password = binding.userPasswordInputTextRegister.text.toString()
             val username = binding.userNameInputTextRegister.text.toString()
             registerButtonAction(username, email, password)
+        }
+
+        binding.goToLogin.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.loginFragment)
         }
     }
 
