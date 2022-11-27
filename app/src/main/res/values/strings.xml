@@ -4,14 +4,18 @@
     <string name="register_text">Register</string>
     <string name="register_info_text">Create your account and order your favourite meal</string>
     <string name="login_info_text">Special discounts to your favourite meals</string>
+    <string name="forgot_password_info">You can reset your password</string>
+    <string name="forgot_password_info_2">If you clicked "send" button, please check your email (sometimes mail falls in spam box) for reset passsword</string>
     <string name="password_text">Password</string>
     <string name="email_text">Email</string>
     <string name="username_text">Username</string>
     <string name="register_to_login_question">Do you have an account?</string>
     <string name="sign_in_text">Sign in</string>
     <string name="login_text">Login</string>
+    <string name="forgot_password_text">Forgot Password</string>
     <string name="login_to_register_text">You have not an account?</string>
     <string name="sign_up_text">Sign up</string>
+    <string name="send_text">Send</string>
 
 
 </resources>
