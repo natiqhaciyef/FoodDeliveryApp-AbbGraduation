@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:orientation="vertical"
+    android:background="@color/mainOrange"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.UserDrawerFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/userImageViewDrawer"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:src="@drawable/natig_image"
+        app:shapeAppearanceOverlay="@style/RoundedCorner" />
+
+    <TextView
+        android:id="@+id/userNameTextDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Natiq Haciyev"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/userEmailTextDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:text="natiq00h2272@gmail.com"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
