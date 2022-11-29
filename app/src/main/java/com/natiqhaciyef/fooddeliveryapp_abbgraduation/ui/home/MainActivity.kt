@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toogle.isDrawerIndicatorEnabled = true
         toogle.syncState()
 
+        binding.toolbarInclude.cartIcon.setOnClickListener {
+            navigationFragments(CartFragment())
+        }
+
         navView.setNavigationItemSelectedListener(this)
 
     }

@@ -20,6 +20,7 @@
     <color name="mainBrown">#F3B382</color>
     <color name="mainBrown_dark">#be8c62</color>
     <color name="mainOrange">#fe8c00</color>
+    <color name="mainOrange_dark">#D86603</color>
     <color name="mainOrange_light">#F2F3A736</color>
     <color name="mainOrange_extra_light">#F2FDC36D</color>
     <color name="mainGreen">#1FBA04</color>
