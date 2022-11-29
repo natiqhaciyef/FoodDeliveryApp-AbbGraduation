@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentHomeBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CategoryAdapter
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.CategoryList
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private val categoryList = CategoryList.list
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -23,6 +27,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.homeFragment = this
+        binding.categoryAdapter = CategoryAdapter(requireContext(), categoryList)
+        binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
     }
 }
