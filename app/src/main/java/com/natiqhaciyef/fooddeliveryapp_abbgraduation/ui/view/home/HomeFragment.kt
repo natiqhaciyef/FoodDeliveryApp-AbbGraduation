@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentHomeBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CategoryAdapter
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.FoodAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.CategoryList
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +31,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.homeFragment = this
         binding.categoryAdapter = CategoryAdapter(requireContext(), categoryList)
+        binding.foodAdapter = FoodAdapter(requireContext(), listOf())
         binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
     }
