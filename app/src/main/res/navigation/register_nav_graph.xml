@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register.RegisterFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register.LoginFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register.ForgotPasswordFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" />
 </navigation>

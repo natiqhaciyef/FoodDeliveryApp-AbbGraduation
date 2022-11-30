@@ -1,4 +1,4 @@
-package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home
+package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,10 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentHomeBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CategoryAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.CategoryList
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val categoryList = CategoryList.list
