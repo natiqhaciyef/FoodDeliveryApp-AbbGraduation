@@ -24,8 +24,9 @@ class FoodAdapter(val mContext: Context, val list: List<FoodModel>): RecyclerVie
         val itemView = holder.binding
         val food = list[position]
 
+        //http://kasimadalan.pe.hu/foods/images/meatball.png
         itemView.foodModel = food
-        Glide.with(mContext).load(food.image).into(itemView.foodRecyclerImage)
+        Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}").into(itemView.foodRecyclerImage)
     }
 
     override fun getItemCount(): Int = list.size
