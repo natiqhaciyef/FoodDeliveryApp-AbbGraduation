@@ -6,7 +6,7 @@
     <data>
         <variable
             name="homeFragment"
-            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.HomeFragment" />
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragment" />
         <variable
             name="categoryAdapter"
             type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CategoryAdapter" />
@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.HomeFragment">
+        tools:context=".ui.view.home.HomeFragment">
 
         <TextView
             android:id="@+id/chooseText"

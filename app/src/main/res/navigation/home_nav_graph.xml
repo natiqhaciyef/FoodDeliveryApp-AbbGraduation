@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.HomeFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -22,17 +22,17 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.DetailsFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.CartFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/paymentFragment2"
-        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.PaymentFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
 </navigation>
