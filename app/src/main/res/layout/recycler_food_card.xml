@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="7dp"
-        android:layout_margin="5dp"
+        android:layout_margin="7dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,7 +79,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/like_button_empty"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
