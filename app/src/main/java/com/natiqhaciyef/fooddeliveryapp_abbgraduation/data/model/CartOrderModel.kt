@@ -1,5 +1,7 @@
 package com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model
 
+import java.io.Serializable
+
 data class CartOrderModel(
     var id: Int,
     var name: String,
@@ -8,4 +10,4 @@ data class CartOrderModel(
     var category: String,
     var orderAmount: Int,
     var username: String
-)
+): Serializable

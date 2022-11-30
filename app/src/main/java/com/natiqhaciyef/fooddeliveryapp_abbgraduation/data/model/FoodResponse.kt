@@ -1,4 +1,3 @@
 package com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model
 
-class FoodResponse(var list: List<FoodModel>) {
-}
+data class FoodResponse(var foods: List<FoodModel>)

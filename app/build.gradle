@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id "dagger.hilt.android.plugin"
     id 'com.google.gms.google-services'
     id "androidx.navigation.safeargs.kotlin"
 }
@@ -60,26 +61,27 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.5.1"
 
     //Coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation "androidx.room:room-ktx:2.4.3"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-
-    //Room db
-    implementation "androidx.room:room-runtime:2.5.0-beta02"
-    kapt "androidx.room:room-compiler:2.5.0-beta02"
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
     //Dagger Hilt
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-android-compiler:2.44"
+    implementation "com.google.dagger:hilt-android:2.42"
+    kapt "com.google.dagger:hilt-android-compiler:2.42"
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //Kotlin extensions
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+    implementation "androidx.activity:activity-ktx:1.6.1"
 }
