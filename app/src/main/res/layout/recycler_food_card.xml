@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="foodModel"
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -34,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:text="Title text"
+                android:text="@{foodModel.name}"
+                android:hint="Grilled Chicken"
                 android:textColor="@color/black"
                 android:textSize="21sp"
                 android:textStyle="bold"
@@ -43,13 +47,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/foodRecyclerImage" />
 
             <TextView
-                android:id="@+id/foodInfoRecyclerText"
+                android:id="@+id/foodCategoryRecyclerText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="2dp"
-                android:text="Info text"
+                android:text='@{"Category : " + foodModel.category}'
+                android:hint="Meals"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +69,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center_vertical"
-                android:text="37 $"
+                android:text='@{foodModel.price + "$"}'
+                android:hint="37 $"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -85,7 +91,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.903"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodInfoRecyclerText"
+                app:layout_constraintTop_toBottomOf="@+id/foodCategoryRecyclerText"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
