@@ -1,4 +1,4 @@
-package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register
+package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentRegisterBinding
-import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.home.MainActivity
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.MainActivity
 
 
 class RegisterFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.register
+package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
