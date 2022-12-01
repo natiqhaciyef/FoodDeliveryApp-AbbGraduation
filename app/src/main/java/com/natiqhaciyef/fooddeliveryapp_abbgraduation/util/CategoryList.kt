@@ -4,14 +4,9 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CategoryModel
 
 object CategoryList {
     val list = arrayListOf(
-        CategoryModel("All Meals","all_meals_category"),
-        CategoryModel("Meat","meat_category"),
-        CategoryModel("Chicken","chicken_category"),
-        CategoryModel("Fast food","fast_food_category"),
-        CategoryModel("Soup","soup_category"),
-        CategoryModel("Salad","salad_category"),
+        CategoryModel("All","all_meals_category"),
+        CategoryModel("Hot Meals","meat_category"),
         CategoryModel("Deserts","pastry_category"),
-        CategoryModel("Cold drink","cold_drink_category"),
-        CategoryModel("Hot drink","hot_drink_category")
+        CategoryModel("Drinks","cold_drink_category")
     )
 }
