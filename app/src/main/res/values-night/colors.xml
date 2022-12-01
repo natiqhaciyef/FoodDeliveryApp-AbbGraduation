@@ -12,10 +12,10 @@
     <color name="mainBlue">#009DE0</color>
     <color name="mainBlue_light">#F300E0E0</color>
     <color name="mainRed">#f55a51</color>
-    <color name="mainBlack">#181818</color>
+    <color name="mainBlack">#FFFFFFFF</color>
     <color name="mainGray">#7E7E7E</color>
-    <color name="mainWhite">#FFFFFF</color>
-    <color name="mainWhite_Dark">#FFFFFF</color>
+    <color name="mainWhite">#5E2C00</color>
+    <color name="mainWhite_Dark">#00458F</color>
     <color name="mainBrown_light">#FDDBC6</color>
     <color name="mainYellowBrown_light">#FFDEC9</color>
     <color name="mainBrown">#F3B382</color>
