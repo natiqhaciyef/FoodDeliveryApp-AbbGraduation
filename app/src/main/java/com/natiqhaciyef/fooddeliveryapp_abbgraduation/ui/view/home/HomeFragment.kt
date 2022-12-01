@@ -15,6 +15,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentHomeBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CategoryAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.FoodAdapter
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.clickaction.SetOnCategorySelected
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.CategoryList
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val categoryList = CategoryList.list
-    private var foodList = listOf<FoodModel>()
+    private var foodList = mutableListOf<FoodModel>()
+    private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var foodAdapter: FoodAdapter
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
@@ -38,12 +41,22 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.homeFragment = this
-        binding.categoryAdapter = CategoryAdapter(requireContext(), categoryList)
-        binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         viewModel.liveData.observe(viewLifecycleOwner, Observer{
             foodList = it
-            binding.foodAdapter = FoodAdapter(requireContext(), foodList)
+
+            foodAdapter = FoodAdapter(requireContext(), foodList)
+            binding.foodAdapter = foodAdapter
             binding.foodRecyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+
+            categoryAdapter = CategoryAdapter(requireContext(), categoryList)
+            binding.categoryAdapter = categoryAdapter
+            categoryAdapter.itemClick(object: SetOnCategorySelected{
+                override fun categorySelected(category: String) {
+                    filterByCategory(category)
+                }
+            })
+
+            binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         })
     }
 
@@ -56,5 +69,12 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getAllFoods()
+    }
+
+    fun filterByCategory(category: String){
+        val list = viewModel.categoryFilter(category, foodList)
+        if (list.isNotEmpty()){
+            foodAdapter.filter(list)
+        }
     }
 }
