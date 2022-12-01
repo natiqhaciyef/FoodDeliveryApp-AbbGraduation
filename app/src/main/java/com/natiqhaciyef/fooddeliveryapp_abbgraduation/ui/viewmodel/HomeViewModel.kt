@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(var repo: AppRepository)  : ViewModel() {
-    val liveData = MutableLiveData<List<FoodModel>>()
+    val liveData = MutableLiveData<MutableList<FoodModel>>()
 
     init {
         getAllFoods()
@@ -20,7 +20,20 @@ class HomeViewModel @Inject constructor(var repo: AppRepository)  : ViewModel() 
 
     fun getAllFoods(){
         CoroutineScope(Dispatchers.Main).launch {
-            liveData.value = repo.getAllFood()
+            liveData.value = repo.getAllFood().toMutableList()
         }
+    }
+
+    fun categoryFilter(category: String, list: MutableList<FoodModel>): MutableList<FoodModel> {
+        var customList = mutableListOf<FoodModel>()
+        if (category.lowercase() == "all" || category.isEmpty() || category.lowercase() == ""){
+            customList = list
+        }else{
+            customList = list.filter {
+                it.category.lowercase() == category.lowercase()
+            } as MutableList<FoodModel>
+        }
+
+        return customList
     }
 }
