@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/mainWhite_Dark"
             >
 
             <ImageView
@@ -39,7 +40,7 @@
                 android:hint="Fast Food"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/mainBlack"
                 android:fontFamily="@font/dancing_script_bold"
                 />
 

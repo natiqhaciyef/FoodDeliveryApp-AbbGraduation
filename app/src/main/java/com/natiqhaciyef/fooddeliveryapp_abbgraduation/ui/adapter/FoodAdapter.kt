@@ -9,8 +9,10 @@ import com.bumptech.glide.Glide
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.RecyclerFoodCardBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragment
 
-class FoodAdapter(val mContext: Context, val list: List<FoodModel>): RecyclerView.Adapter<FoodAdapter.FoodHolder>(){
+class FoodAdapter(val mContext: Context, var list: List<FoodModel>):
+    RecyclerView.Adapter<FoodAdapter.FoodHolder>(){
 
     inner class FoodHolder(val binding: RecyclerFoodCardBinding): RecyclerView.ViewHolder(binding.root)
 
