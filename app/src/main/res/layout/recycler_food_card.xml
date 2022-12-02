@@ -71,7 +71,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center_vertical"
-                android:text='@{foodModel.price + "$"}'
+                android:text='@{foodModel.price + " $"}'
                 android:hint="37 $"
                 android:textColor="@color/mainBlack"
                 android:textSize="22sp"

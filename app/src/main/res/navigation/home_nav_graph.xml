@@ -18,20 +18,33 @@
             app:destination="@id/cartFragment" />
         <action
             android:id="@+id/action_homeFragment_to_paymentFragment2"
-            app:destination="@id/paymentFragment2" />
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="foodDetailsObject"
+            app:argType="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel" />
+        <action
+            android:id="@+id/action_detailsFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <argument
+            android:name="cartFoodObject"
+            app:argType="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
-        android:id="@+id/paymentFragment2"
+        android:id="@+id/paymentFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
