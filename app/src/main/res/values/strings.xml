@@ -16,6 +16,8 @@
     <string name="login_to_register_text">You have not an account?</string>
     <string name="sign_up_text">Sign up</string>
     <string name="send_text">Send</string>
+    <string name="cart_main_text">Orders added to cart</string>
+    <string name="submit_cart_text">Submit cart</string>
 
 
 </resources>
