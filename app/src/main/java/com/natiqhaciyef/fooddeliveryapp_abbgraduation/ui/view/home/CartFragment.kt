@@ -48,7 +48,6 @@ class CartFragment : Fragment() {
         auth = Firebase.auth
         firestore = Firebase.firestore
         getUserName()
-        viewModel.getAllCart(username)
 
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {

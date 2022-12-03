@@ -31,9 +31,8 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var username: String
+    private var username: String = ""
     private val viewModel: DetailsViewModel by viewModels()
-    private var a = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,14 +65,8 @@ class DetailsFragment : Fragment() {
             decreaseAmount(data.foodDetailsObject)
         }
 
-//        val ap = AppPref(requireContext())
-//        CoroutineScope(Dispatchers.Main).launch {
-//            var a = ap.readCounter()
-//            a+=1
-//            ap.saveCounter(a)
-//        }
-        getUserName()
         binding.addToCartButtonDetails.setOnClickListener {
+            getUserName()
             val cartOrderModel = CartOrderModel(
                 cartId = 0,
                 name = data.foodDetailsObject.name,
@@ -105,7 +98,7 @@ class DetailsFragment : Fragment() {
     private fun getUserName(){
         firestore.collection("UserNames").document(auth.currentUser!!.uid).addSnapshotListener{value, error ->
             if (value != null)
-                username = value.get("name") as String
+                username += value.get("name") as String
         }
     }
 }

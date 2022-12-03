@@ -15,8 +15,9 @@ interface FoodApi {
     @GET("foods/getAllFoods.php")
     suspend fun getAllFood(): FoodResponse
 
-    @GET("foods/getFoodsCart.php")
-    suspend fun getAllCart(@Query("userName") userName: String = "Natiq"): CartResponse
+    @POST("foods/getFoodsCart.php")
+    @FormUrlEncoded
+    suspend fun getAllCart(@Field("userName") userName: String = "Natiq"): CartResponse
 
     @POST("foods/insertFood.php")
     @FormUrlEncoded
