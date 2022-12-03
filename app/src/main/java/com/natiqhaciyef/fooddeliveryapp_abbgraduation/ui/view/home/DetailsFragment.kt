@@ -50,7 +50,8 @@ class DetailsFragment : Fragment() {
         firestore = Firebase.firestore
 
         binding.detailsFragment = this
-        binding.foodModel = data.foodDetailsObject
+        val foodModel = data.foodDetailsObject
+        binding.foodModel = foodModel
         Glide.with(requireContext())
             .load("http://kasimadalan.pe.hu/foods/images/${data.foodDetailsObject.image}")
             .into(binding.detailsImageView)
@@ -69,12 +70,12 @@ class DetailsFragment : Fragment() {
             getUserName()
             val cartOrderModel = CartOrderModel(
                 cartId = 0,
-                name = data.foodDetailsObject.name,
-                image = "${data.foodDetailsObject.image}",
-                price = data.foodDetailsObject.price,
-                category = data.foodDetailsObject.category,
+                name = foodModel.name,
+                image = "${foodModel.image}",
+                price = binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price,
+                category = foodModel.category,
                 orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
-                userName = username
+                userName = "Natiq"
             )
             viewModel.addToCart(cartOrderModel)
         }
