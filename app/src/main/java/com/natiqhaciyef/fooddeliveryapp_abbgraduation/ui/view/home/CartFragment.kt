@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -29,27 +31,27 @@ class CartFragment : Fragment() {
     private var list = listOf<CartOrderModel>()
     private lateinit var cartAdapter: CartAdapter
     private var username: String = ""
-    private lateinit var viewModel: CartViewModel
+    private val viewModel: CartViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.cartFragment = this
         auth = Firebase.auth
         firestore = Firebase.firestore
         getUserName()
-        binding.cartFragment = this
+        viewModel.getAllCart(username)
 
-        viewModel.liveData.observe(viewLifecycleOwner, Observer {
-            println("B")
-            if (it.isNotEmpty()) {
-                println("C")
+        viewModel.cartLiveData.observe(viewLifecycleOwner) {
+            if (it != null && it.isNotEmpty()) {
                 list = it
                 cartAdapter = CartAdapter(requireContext(), list)
                 binding.cartAdapter = cartAdapter
@@ -57,18 +59,7 @@ class CartFragment : Fragment() {
             } else {
                 binding.cartItemLessText.visibility = View.VISIBLE
             }
-        })
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getAllCart(username)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val temp: CartViewModel by viewModels()
-        viewModel = temp
+        }
     }
 
     private fun getUserName() {
