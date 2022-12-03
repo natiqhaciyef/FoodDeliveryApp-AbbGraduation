@@ -3,11 +3,11 @@ package com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model
 import java.io.Serializable
 
 data class CartOrderModel(
-    var id: Int,
+    var cartId: Int,
     var name: String,
     var image: String,
     var price: Int,
     var category: String,
     var orderAmount: Int,
-    var username: String
+    var userName: String
 ): Serializable

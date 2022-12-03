@@ -36,13 +36,7 @@
         android:id="@+id/cartFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" >
-        <argument
-            android:name="cartFoodObject"
-            app:argType="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel"
-            app:nullable="true"
-            android:defaultValue="@null" />
-    </fragment>
+        tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.PaymentFragment"
