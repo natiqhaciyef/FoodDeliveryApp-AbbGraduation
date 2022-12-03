@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="cartOrder"
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,7 +35,8 @@
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:padding="3dp"
-                android:text="Burgerdide osturaq r4r"
+                android:hint="Burgerdide osturaq r4r"
+                android:text="@{cartOrder.name}"
                 android:textColor="@color/mainBlack"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"
@@ -47,7 +50,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="372 $"
+                android:text='@{cartOrder.price + " $"}'
                 android:textColor="@color/mainBlack"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"
