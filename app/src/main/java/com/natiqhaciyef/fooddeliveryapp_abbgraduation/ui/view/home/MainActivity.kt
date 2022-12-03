@@ -19,6 +19,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.ActivityMainBi
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_tablayout.*
+import kotlinx.android.synthetic.main.app_bar_tablayout.view.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toogle.isDrawerIndicatorEnabled = true
         toogle.syncState()
 
-        binding.toolbarInclude.cartIcon.setOnClickListener {
+        toolbarInclude.cartIcon.setOnClickListener {
             navigationFragments(CartFragment())
         }
 
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun navigationFragments(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.navHostView,fragment)
+            addToBackStack("")
             commit()
         }
     }

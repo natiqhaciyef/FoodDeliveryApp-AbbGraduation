@@ -7,6 +7,9 @@
         <variable
             name="paymentFragment"
             type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.PaymentFragment" />
+        <variable
+            name="adapter"
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.PaymentAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
             app:cardBackgroundColor="@color/mainBlue_dark"
             app:layout_constraintTop_toTopOf="parent"
@@ -144,9 +147,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Last Payments"
+            android:paddingStart="5dp"
             android:textColor="@color/mainBlack"
             android:textSize="26sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +159,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/textView1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

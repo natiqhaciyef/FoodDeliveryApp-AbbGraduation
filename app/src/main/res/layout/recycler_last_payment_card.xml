@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="paymentModel"
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.PaymentModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,8 +22,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order name: Burger"
-                android:textSize="22sp"
+                android:text='@{"Order name: " + paymentModel.name}'
+                android:textSize="18sp"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:padding="10dp"
@@ -31,17 +34,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- 30 $"
+                android:text='@{"- " + paymentModel.totalPrice + " $"}'
                 android:layout_weight="1"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:padding="10dp"
                 android:textColor="@color/mainRed"
                 android:textStyle="bold"
                 android:gravity="center"
                 />
-
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </layout>
