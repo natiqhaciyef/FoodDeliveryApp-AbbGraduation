@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CartViewModel @Inject constructor(var repo: AppRepository): ViewModel() {
-    val cartLiveData = MutableLiveData<List<CartOrderModel>?>()
+    val cartLiveData = MutableLiveData<List<CartOrderModel>>()
 
     init {
         getAllCart("Natiq")

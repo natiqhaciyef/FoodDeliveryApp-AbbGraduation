@@ -5,6 +5,12 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/homeFragment"
+            android:title="Home cart"
+            android:icon="@drawable/home_icon"
+            />
+
+        <item
             android:id="@+id/cartFragment"
             android:title="Go to cart"
             android:icon="@drawable/cart_icon"
