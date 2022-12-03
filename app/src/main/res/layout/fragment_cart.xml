@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="cartFragment"
             type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment" />
+        <variable
+            name="cartAdapter"
+            type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CartAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,40 +21,55 @@
             android:id="@+id/cartItemsListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cart_main_text"
-            android:textSize="24sp"
-            android:textColor="@color/mainBlack"
-            android:textStyle="bold"
-            android:padding="10dp"
             android:drawableEnd="@drawable/cart_icon"
             android:drawableTint="@color/mainBlack"
-            app:layout_constraintStart_toStartOf="parent"
+            android:padding="10dp"
+            android:text="@string/cart_main_text"
+            android:textColor="@color/mainBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
+            android:adapter="@{cartAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cartItemsListText"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/cartItemsListText" />
+
+        <TextView
+            android:id="@+id/cartItemLessText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:text="Cart is empty"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cartItemsListText" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="70dp"
             android:layout_marginEnd="70dp"
-            android:text="@string/submit_cart_text"
-            android:textStyle="bold"
-            android:textColor="@color/mainWhite"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/custom_details_count_button"
+            android:text="@string/submit_cart_text"
+            android:textColor="@color/mainWhite"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -7,16 +7,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AppDataSource (var api: FoodApi) {
+class AppDataSource(var api: FoodApi) {
 
     suspend fun getAllFood(): List<FoodModel> =
         withContext(Dispatchers.IO) {
             api.getAllFood().foods
         }
 
-    suspend fun getAllCart(userName: String): List<CartOrderModel> = withContext(Dispatchers.IO) {
-        api.getAllCart(userName).list
-    }
+    suspend fun getAllCart(userName: String): List<CartOrderModel> =
+        withContext(Dispatchers.IO) {
+            api.getAllCart(userName).foods_cart
+        }
 
     suspend fun deleteFromCart(cartId: Int, userName: String) = api.deleteFromCart(cartId, userName)
 

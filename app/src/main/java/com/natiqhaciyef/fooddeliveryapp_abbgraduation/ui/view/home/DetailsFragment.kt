@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -15,11 +15,16 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.AppPref
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentDetailsBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -27,6 +32,8 @@ class DetailsFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var username: String
+    private val viewModel: DetailsViewModel by viewModels()
+    private var a = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,20 +65,27 @@ class DetailsFragment : Fragment() {
         binding.itemRemoveDetailsFragment.setOnClickListener {
             decreaseAmount(data.foodDetailsObject)
         }
-
         getUserName()
+
+        val ap = AppPref(requireContext())
+        CoroutineScope(Dispatchers.Main).launch {
+            var a = ap.readCounter()
+            a+=1
+            ap.saveCounter(a)
+        }
 
         binding.addToCartButtonDetails.setOnClickListener {
             val cartOrderModel = CartOrderModel(
-                id = data.foodDetailsObject.id,
+                cartId = a,
                 name = data.foodDetailsObject.name,
-                image = "http://kasimadalan.pe.hu/foods/images/${data.foodDetailsObject.image}",
+                image = "${data.foodDetailsObject.image}",
                 price = data.foodDetailsObject.price,
                 category = data.foodDetailsObject.category,
                 orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
-                username = username
+                userName = username
             )
-            val action = DetailsFragmentDirections.actionDetailsFragmentToCartFragment(cartOrderModel)
+            viewModel.addToCart(cartOrderModel)
+            val action = DetailsFragmentDirections.actionDetailsFragmentToCartFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
