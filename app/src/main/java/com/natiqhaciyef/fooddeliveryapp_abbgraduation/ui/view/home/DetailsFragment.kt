@@ -65,18 +65,17 @@ class DetailsFragment : Fragment() {
         binding.itemRemoveDetailsFragment.setOnClickListener {
             decreaseAmount(data.foodDetailsObject)
         }
+
+//        val ap = AppPref(requireContext())
+//        CoroutineScope(Dispatchers.Main).launch {
+//            var a = ap.readCounter()
+//            a+=1
+//            ap.saveCounter(a)
+//        }
         getUserName()
-
-        val ap = AppPref(requireContext())
-        CoroutineScope(Dispatchers.Main).launch {
-            var a = ap.readCounter()
-            a+=1
-            ap.saveCounter(a)
-        }
-
         binding.addToCartButtonDetails.setOnClickListener {
             val cartOrderModel = CartOrderModel(
-                cartId = a,
+                cartId = 0,
                 name = data.foodDetailsObject.name,
                 image = "${data.foodDetailsObject.image}",
                 price = data.foodDetailsObject.price,
@@ -85,8 +84,6 @@ class DetailsFragment : Fragment() {
                 userName = username
             )
             viewModel.addToCart(cartOrderModel)
-            val action = DetailsFragmentDirections.actionDetailsFragmentToCartFragment()
-            Navigation.findNavController(it).navigate(action)
         }
     }
 

@@ -18,6 +18,7 @@
     <string name="send_text">Send</string>
     <string name="cart_main_text">Orders added to cart</string>
     <string name="submit_cart_text">Submit cart</string>
+    <string name="cart_is_empty_text">Cart is empty</string>
 
 
 </resources>

@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CartViewModel @Inject constructor(var repo: AppRepository): ViewModel() {
-    val liveData = MutableLiveData<List<CartOrderModel>>()
+    val cartLiveData = MutableLiveData<List<CartOrderModel>?>()
 
     init {
         getAllCart("Natiq")
@@ -21,7 +21,7 @@ class CartViewModel @Inject constructor(var repo: AppRepository): ViewModel() {
     fun getAllCart(username: String){
         CoroutineScope(Dispatchers.Main).launch {
             println(repo.getAllCart(username))
-            liveData.value = repo.getAllCart(username)
+            cartLiveData.value = repo.getAllCart(username)
         }
     }
 }

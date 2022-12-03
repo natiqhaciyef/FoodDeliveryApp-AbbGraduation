@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -39,6 +40,7 @@ class RegisterFragment : Fragment() {
         if (auth.currentUser != null){
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
+            (activity as RegisterActivity).finish()
         }
 
         binding.registerButton.setOnClickListener {
@@ -47,6 +49,8 @@ class RegisterFragment : Fragment() {
             val username = binding.userNameInputTextRegister.text.toString()
             registerButtonAction(username, email, password)
         }
+
+        findNavController().enableOnBackPressed(true)
 
         binding.goToLogin.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.loginFragment)
