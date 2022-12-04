@@ -39,7 +39,7 @@
             android:layout_marginBottom="20dp"
             android:adapter="@{cartAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintBottom_toTopOf="@+id/submitAllCartButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartItemsListText" />
@@ -53,14 +53,13 @@
             android:gravity="center"
             android:textSize="20sp"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintBottom_toTopOf="@+id/submitAllCartButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartItemsListText" />
 
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton"
+            android:id="@+id/submitAllCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
@@ -73,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

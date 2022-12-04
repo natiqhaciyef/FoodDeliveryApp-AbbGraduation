@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -15,16 +14,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.natiqhaciyef.fooddeliveryapp_abbgraduation.AppPref
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentDetailsBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
