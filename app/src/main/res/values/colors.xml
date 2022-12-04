@@ -10,7 +10,9 @@
     
     <!--Custom colors-->
     <color name="mainBlue">#009DE0</color>
+    <color name="mainBlue2_dark_light">#016FC3</color>
     <color name="mainBlue_dark">#001667</color>
+    <color name="mainBlue_dark2_up">#072287</color>
     <color name="mainBlue_light">#F300E0E0</color>
     <color name="mainRed">#f55a51</color>
     <color name="mainRed_light">#F88781</color>
@@ -28,4 +30,5 @@
     <color name="mainOrange_light">#F2F3A736</color>
     <color name="mainOrange_extra_light">#F2FDC36D</color>
     <color name="mainGreen">#1FBA04</color>
+
 </resources>
