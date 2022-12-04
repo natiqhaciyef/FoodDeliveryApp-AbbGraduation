@@ -21,7 +21,6 @@ class DetailsViewModel @Inject constructor(var repo: AppRepository) : ViewModel(
                 cartOrderModel.orderAmount,
                 cartOrderModel.userName
             )
-            println("A")
         }
     }
 }

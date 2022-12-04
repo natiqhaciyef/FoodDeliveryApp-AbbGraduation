@@ -14,10 +14,11 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.clickaction.Set
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragment
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragmentDirections
 
-class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>):
-    RecyclerView.Adapter<FoodAdapter.FoodHolder>(){
+class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>) :
+    RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
 
-    inner class FoodHolder(val binding: RecyclerFoodCardBinding): RecyclerView.ViewHolder(binding.root)
+    inner class FoodHolder(val binding: RecyclerFoodCardBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodHolder {
         val binding: RecyclerFoodCardBinding = DataBindingUtil
@@ -31,11 +32,15 @@ class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>):
 
         //http://kasimadalan.pe.hu/foods/images/meatball.png
         itemView.foodModel = food
-        Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}").into(itemView.foodRecyclerImage)
+        Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}")
+            .into(itemView.foodRecyclerImage)
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food)
-            Navigation.findNavController(it).navigate(action)
+            try {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food)
+                Navigation.findNavController(it).navigate(action)
+            } catch (e: Exception) { }
         }
+
     }
 
     override fun getItemCount(): Int = list.size

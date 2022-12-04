@@ -33,7 +33,11 @@
         android:id="@+id/paymentFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="totalPrice"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment"
