@@ -52,11 +52,13 @@ class CartFragment : Fragment() {
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {
                 list = it
-                cartAdapter = CartAdapter(requireContext(), list)
+                cartAdapter = CartAdapter(requireContext(), list, viewModel)
                 binding.cartAdapter = cartAdapter
                 binding.cartItemLessText.visibility = View.GONE
+                binding.cartRecyclerView.visibility = View.VISIBLE
             } else {
                 binding.cartItemLessText.visibility = View.VISIBLE
+                binding.cartRecyclerView.visibility = View.GONE
             }
         }
     }
@@ -68,5 +70,10 @@ class CartFragment : Fragment() {
                     username += value.get("name") as String
                 }
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllCart("Natiq")
     }
 }

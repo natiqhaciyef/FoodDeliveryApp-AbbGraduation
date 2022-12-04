@@ -37,5 +37,9 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.CartFragment"
-        android:label="CartFragment" />
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
 </navigation>

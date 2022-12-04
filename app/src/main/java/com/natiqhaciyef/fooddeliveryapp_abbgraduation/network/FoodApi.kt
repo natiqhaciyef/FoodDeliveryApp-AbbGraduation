@@ -27,10 +27,10 @@ interface FoodApi {
         @Field("price") price: Int,
         @Field("category") category: String,
         @Field("orderAmount") orderAmount: Int,
-        @Field("userName") userName: String
+        @Field("userName") userName: String = "Natiq"
     ): CRUDResponse
 
-    @DELETE("foods/deleteFood.php")
+    @POST("foods/deleteFood.php")
     @FormUrlEncoded
     suspend fun deleteFromCart(
         @Field("cartId") id: Int,
