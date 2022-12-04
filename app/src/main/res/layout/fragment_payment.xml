@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/mainSilver_card"
-                    android:text="Visa Gold"
+                    android:text="Visa Premium"
                     android:textStyle="bold"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"

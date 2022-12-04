@@ -11,24 +11,29 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewModel @Inject constructor(var repo: AppRepository): ViewModel() {
+class CartViewModel @Inject constructor(var repo: AppRepository) : ViewModel() {
     val cartLiveData = MutableLiveData<List<CartOrderModel>>()
     val username = "Natiq"
+
     init {
         getAllCart("Natiq")
     }
 
-    fun getAllCart(username: String){
+    fun getAllCart(username: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            println(repo.getAllCart(username))
-            cartLiveData.value = repo.getAllCart(username)
+            try {
+                cartLiveData.value = repo.getAllCart(username)
+
+            } catch (e: Exception) {
+                cartLiveData.value = listOf()
+            }
         }
     }
 
-    fun deleteCart(cartId: Int, username: String){
+    fun deleteCart(cartId: Int, username: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            repo.deleteFromCart(cartId,username)
-            getAllCart(username)
+            repo.deleteFromCart(cartId, username)
+            getAllCart("Natiq")
         }
     }
 }

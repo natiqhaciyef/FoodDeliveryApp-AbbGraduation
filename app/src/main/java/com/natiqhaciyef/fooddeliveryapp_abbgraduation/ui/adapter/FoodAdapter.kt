@@ -33,7 +33,7 @@ class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>):
         itemView.foodModel = food
         Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}").into(itemView.foodRecyclerImage)
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food,)
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food)
             Navigation.findNavController(it).navigate(action)
         }
     }
