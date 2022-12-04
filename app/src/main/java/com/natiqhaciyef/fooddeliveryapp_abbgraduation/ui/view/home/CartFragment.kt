@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +18,8 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentCartBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CartAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.TotalData
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.filterNameText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,6 +60,22 @@ class CartFragment : Fragment() {
                 binding.cartRecyclerView.visibility = View.GONE
             }
         }
+
+        binding.submitAllCartButton.setOnClickListener {view->
+            TotalData.name = list.filterNameText()
+            TotalData.totalPrice = sumAllPrice(list)
+            Navigation.findNavController(view).navigate(R.id.paymentFragment)
+        }
+    }
+
+    private fun sumAllPrice(list: List<CartOrderModel>): Int{
+        var totalSum = 0
+        if (list.isNotEmpty()){
+            for (element in list){
+                totalSum += element.price
+            }
+        }
+        return totalSum
     }
 
     private fun getUserName() {

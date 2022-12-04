@@ -6,7 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toogle.syncState()
 
         toolbarInclude.cartIcon.setOnClickListener {
-            navigationFragments(CartFragment())
+            navigationFragments(R.id.cartFragment)
         }
 
         navView.setNavigationItemSelectedListener(this)
@@ -60,19 +62,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun navigationFragments(fragment: Fragment){
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.navHostView,fragment)
-            addToBackStack("")
-            commit()
-        }
+    private fun navigationFragments(id: Int){
+        binding.navHostView.findNavController().navigate(id)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.homeFragment -> navigationFragments(HomeFragment())
-            R.id.cartFragment -> navigationFragments(CartFragment())
-            R.id.paymentFragment -> navigationFragments(PaymentFragment())
+            R.id.homeFragment -> navigationFragments(R.id.homeFragment)
+            R.id.cartFragment -> navigationFragments(R.id.cartFragment)
+            R.id.paymentFragment -> navigationFragments(R.id.paymentFragment)
             else -> false
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)

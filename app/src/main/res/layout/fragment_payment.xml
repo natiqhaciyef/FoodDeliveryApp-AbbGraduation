@@ -10,6 +10,9 @@
         <variable
             name="adapter"
             type="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.PaymentAdapter" />
+        <variable
+            name="lastBalance"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -223,7 +226,7 @@
                     android:layout_marginStart="15dp"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center_vertical"
-                    android:text="130.82 $"
+                    android:text='@{lastBalance + ".82 $"}'
                     android:textColor="@color/mainSilver_card"
                     android:textSize="30sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
