@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,6 +19,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.AlertDialogLayoutBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentCartBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CartAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
@@ -64,7 +69,7 @@ class CartFragment : Fragment() {
         binding.submitAllCartButton.setOnClickListener {view->
             TotalData.name = list.filterNameText()
             TotalData.totalPrice = sumAllPrice(list)
-            Navigation.findNavController(view).navigate(R.id.paymentFragment)
+            showAlertDialog()
         }
     }
 
@@ -90,5 +95,27 @@ class CartFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getAllCart("Natiq")
+    }
+
+    private fun showAlertDialog(){
+        val view = AlertDialogLayoutBinding.inflate(layoutInflater)
+        val positiveButton = view.buttonActionPositive
+        val negativeButton = view.buttonActionNegative
+
+        val customAlertDialog = AlertDialog.Builder(requireContext())
+            .setView(view.root)
+            .create()
+
+        positiveButton.setOnClickListener {
+            findNavController().navigate(R.id.paymentFragment)
+            customAlertDialog.cancel()
+        }
+
+        negativeButton.setOnClickListener {
+            findNavController().navigate(R.id.cartFragment)
+            customAlertDialog.cancel()
+        }
+
+        customAlertDialog.show()
     }
 }
