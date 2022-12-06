@@ -8,6 +8,7 @@
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
@@ -33,7 +34,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.023"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/pizzaImageView2"
@@ -48,7 +50,8 @@
         app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.813"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/loginTextLoginScreen"
@@ -87,16 +90,17 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="30dp"
-        android:inputType="textEmailAddress"
         android:background="@drawable/custom_input_background"
-        android:elevation="5dp"
         android:drawableEnd="@drawable/email"
+        android:elevation="5dp"
         android:hint="@string/email_text"
+        android:inputType="textEmailAddress"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/infoLogin"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/userPasswordInputTextLogin"
@@ -129,7 +133,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordInputTextLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/userPasswordInputTextLogin"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textQue"
