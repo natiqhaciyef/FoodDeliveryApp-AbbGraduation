@@ -10,6 +10,6 @@
 
         />
     <stroke android:color="@color/mainOrange_dark"
-        android:width="3dp"/>
+        android:width="2dp"/>
     <corners android:radius="8sp"/>
 </shape>
