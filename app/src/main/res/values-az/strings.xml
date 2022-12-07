@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Food Delivery App</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_text">Qeydiyyat </string>
+    <string name="register_text_button">Qeydiyyatdan keç</string>
+    <string name="register_info_text">Qeydiyyatdan keçərək sevimli yeməyini sifariş et !</string>
+    <string name="login_info_text">Sevimli yeməyiniz üçün endirimlər...</string>
+    <string name="forgot_password_info">Şifrənizi yeniləyin</string>
+    <string name="forgot_password_info_2">"Göndər" düyməsini basdıqda email ünvanınıza (bəzən bu spam qutusuna düşür) şifrəni yeniləməklə bağlı ismarıc gələcəkdir.</string>
+    <string name="password_text">Şifrə</string>
+    <string name="email_text">Email</string>
+    <string name="username_text">İstifadəçi adı</string>
+    <string name="register_to_login_question">Mövcud hesabınız var?</string>
+    <string name="sign_in_text">Daxil ol</string>
+    <string name="login_text">Daxil ol</string>
+    <string name="forgot_password_text">Şifrə Unudulub</string>
+    <string name="login_to_register_text">Mövcud hesabınız yoxdur?</string>
+    <string name="sign_up_text">Qeydiyyat</string>
+    <string name="send_text">Göndər</string>
+    <string name="cart_main_text">Sifarişlər səbətə əlavə edildi</string>
+    <string name="submit_cart_text">Səbəti təsdiqlə</string>
+    <string name="cart_is_empty_text">Səbət boşdur</string>
+    <string name="categories">Kateqoriyalar</string>
+    <string name="best_meals">Seçilmiş Yeməklər</string>
+
+</resources>
