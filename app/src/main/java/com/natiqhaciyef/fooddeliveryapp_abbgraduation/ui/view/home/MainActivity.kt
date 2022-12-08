@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun navigationFragments(id: Int){
+    private fun navigationFragments(id: Int){
         binding.navHostView.findNavController().navigate(id)
     }
 

@@ -22,5 +22,15 @@
     <string name="cart_is_empty_text">Səbət boşdur</string>
     <string name="categories">Kateqoriyalar</string>
     <string name="best_meals">Seçilmiş Yeməklər</string>
+    <string name="home">Ana səhifə</string>
+    <string name="go_to_cart">Səbət</string>
+    <string name="wallet">Cüzdan</string>
+    <string name="settings">Parametrlər</string>
+    <string name="log_out">Çıxış</string>
+
+    <string name="all_category">Bütün</string>
+    <string name="meal_category">Yeməklər</string>
+    <string name="dessert_category">Şirniyyatlar</string>
+    <string name="drink_category">İçkilər</string>
 
 </resources>
