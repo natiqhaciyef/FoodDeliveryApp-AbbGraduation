@@ -5,7 +5,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 
 @Dao
 interface FoodDao {
-    @Query("SELECT * FROM FoodModel")
+    @Query("SELECT * FROM food_model")
     suspend fun loadFoodModelFromDb():List<FoodModel>
 
     @Insert

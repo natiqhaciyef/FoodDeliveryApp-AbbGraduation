@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.homeFragment -> navigationFragments(R.id.homeFragment)
             R.id.cartFragment -> navigationFragments(R.id.cartFragment)
             R.id.paymentFragment -> navigationFragments(R.id.paymentFragment)
+            R.id.savedFoodsFragment -> navigationFragments(R.id.likedFoodsFragment)
             R.id.logOut -> showAlertDialog()
             else -> false
         }

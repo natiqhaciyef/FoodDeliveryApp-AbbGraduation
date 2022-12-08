@@ -41,5 +41,5 @@ class AppModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, FoodDatabase::class.java, "FoodModel").build().getDao()
+        Room.databaseBuilder(context, FoodDatabase::class.java, "food_model").build().getDao()
 }
