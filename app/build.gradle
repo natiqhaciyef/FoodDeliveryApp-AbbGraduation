@@ -93,4 +93,12 @@ dependencies {
 
     //Animation Library
     implementation "com.airbnb.android:lottie:5.2.0"
+
+    //Room db
+    implementation "androidx.room:room-runtime:2.5.0-beta02"
+    kapt "androidx.room:room-compiler:2.5.0-beta02"
+
+    //Coroutine
+    implementation "androidx.room:room-ktx:2.4.3"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 }

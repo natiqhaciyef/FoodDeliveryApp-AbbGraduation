@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
         viewModel.liveData.observe(viewLifecycleOwner, Observer{
             foodList = it
 
-            foodAdapter = FoodAdapter(requireContext(), foodList)
+            foodAdapter = FoodAdapter(requireContext(), foodList, viewModel)
             binding.foodAdapter = foodAdapter
             binding.foodRecyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 

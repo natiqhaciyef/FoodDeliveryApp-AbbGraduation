@@ -23,14 +23,14 @@
             />
 
         <item
-            android:id="@+id/settings"
-            android:title="@string/settings"
-            android:icon="@drawable/setting_icon"
+            android:id="@+id/savedFoodsFragment"
+            android:title="@string/saved_foods"
+            android:icon="@drawable/saved_icon"
             />
     </group>
 
     <item
-        android:id="@+id/loOut"
+        android:id="@+id/logOut"
         android:title="@string/log_out"
         android:icon="@drawable/log_out_icon"
         />

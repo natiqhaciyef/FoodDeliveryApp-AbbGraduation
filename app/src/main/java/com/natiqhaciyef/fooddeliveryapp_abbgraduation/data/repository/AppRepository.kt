@@ -21,4 +21,8 @@ class AppRepository (var dataSource: AppDataSource) {
         orderAmount: Int,
         userName: String
     ) = dataSource.addToCart(name, image, price, category, orderAmount, userName)
+
+    suspend fun loadFoodModelFromDB() = dataSource.loadFoodModelFromDb()
+    suspend fun saveFoodModel(foodModel: FoodModel) = dataSource.saveFoodModel(foodModel)
+    suspend fun deleteFoodModel(foodModel: FoodModel) = dataSource.deleteFoodModel(foodModel)
 }

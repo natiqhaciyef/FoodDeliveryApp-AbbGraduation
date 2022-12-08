@@ -1,9 +1,11 @@
 package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -18,6 +20,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.ActivityMainBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.AlertDialogLayoutBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_tablayout.*
@@ -71,9 +75,39 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.homeFragment -> navigationFragments(R.id.homeFragment)
             R.id.cartFragment -> navigationFragments(R.id.cartFragment)
             R.id.paymentFragment -> navigationFragments(R.id.paymentFragment)
+            R.id.savedFoodsFragment -> navigationFragments(R.id.likedFoodsFragment)
+            R.id.logOut -> showAlertDialog()
             else -> false
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun signOut(){
+        auth.signOut()
+        val intent = Intent(this@MainActivity , RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showAlertDialog() {
+        val view = AlertDialogLayoutBinding.inflate(layoutInflater)
+        val positiveButton = view.buttonActionPositive
+        val negativeButton = view.buttonActionNegative
+
+        val customAlertDialog = AlertDialog.Builder(this)
+            .setView(view.root)
+            .create()
+
+        positiveButton.setOnClickListener {
+            signOut()
+            customAlertDialog.cancel()
+        }
+
+        negativeButton.setOnClickListener {
+            customAlertDialog.cancel()
+        }
+
+        customAlertDialog.show()
     }
 }
