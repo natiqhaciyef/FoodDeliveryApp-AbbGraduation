@@ -34,7 +34,6 @@ class CartFragment : Fragment() {
     private lateinit var cartAdapter: CartAdapter
     private var username: String = ""
     private val viewModel: CartViewModel by viewModels()
-    private val detailsViewModel: DetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

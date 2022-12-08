@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +31,6 @@ class DetailsFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private var username: String = ""
     private val viewModel: DetailsViewModel by viewModels()
-    private val cartViewModel: CartViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,9 +81,6 @@ class DetailsFragment : Fragment() {
                     userName = "Natiq"
                 )
             )
-            println("-------------------------------------------------")
-            println("Cart order model : ${list[0].price} - price")
-            println("Cart order model : ${list[0].orderAmount} - order amount")
             viewModel.addToCart(list[0])
         }
     }
