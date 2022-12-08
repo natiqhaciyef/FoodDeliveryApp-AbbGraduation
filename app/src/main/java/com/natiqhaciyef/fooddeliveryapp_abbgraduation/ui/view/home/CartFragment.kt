@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -23,6 +20,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.AlertDialogLay
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentCartBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CartAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.TotalData
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.filterNameText
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,10 +30,11 @@ class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
-    private var list = listOf<CartOrderModel>()
+    private var list = mutableListOf<CartOrderModel>()
     private lateinit var cartAdapter: CartAdapter
     private var username: String = ""
     private val viewModel: CartViewModel by viewModels()
+    private val detailsViewModel: DetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +54,8 @@ class CartFragment : Fragment() {
 
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {
-                list = it
+                list = it.toMutableList()
+
                 cartAdapter = CartAdapter(requireContext(), list, viewModel)
                 binding.cartAdapter = cartAdapter
                 binding.cartItemLessText.visibility = View.GONE
@@ -66,17 +66,18 @@ class CartFragment : Fragment() {
             }
         }
 
-        binding.submitAllCartButton.setOnClickListener {view->
+
+        binding.submitAllCartButton.setOnClickListener { view ->
             TotalData.name = list.filterNameText()
             TotalData.totalPrice = sumAllPrice(list)
             showAlertDialog()
         }
     }
 
-    private fun sumAllPrice(list: List<CartOrderModel>): Int{
+    private fun sumAllPrice(list: List<CartOrderModel>): Int {
         var totalSum = 0
-        if (list.isNotEmpty()){
-            for (element in list){
+        if (list.isNotEmpty()) {
+            for (element in list) {
                 totalSum += element.price
             }
         }
@@ -97,7 +98,7 @@ class CartFragment : Fragment() {
         viewModel.getAllCart("Natiq")
     }
 
-    private fun showAlertDialog(){
+    private fun showAlertDialog() {
         val view = AlertDialogLayoutBinding.inflate(layoutInflater)
         val positiveButton = view.buttonActionPositive
         val negativeButton = view.buttonActionNegative
