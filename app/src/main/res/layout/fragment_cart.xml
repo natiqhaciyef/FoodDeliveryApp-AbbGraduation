@@ -21,7 +21,6 @@
             android:id="@+id/cartItemsListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/cart_icon"
             android:drawableTint="@color/mainBlack"
             android:padding="10dp"
             android:text="@string/cart_main_text"

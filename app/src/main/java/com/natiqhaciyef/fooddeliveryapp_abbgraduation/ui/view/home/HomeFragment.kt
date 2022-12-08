@@ -51,8 +51,8 @@ class HomeFragment : Fragment() {
             categoryAdapter = CategoryAdapter(requireContext(), categoryList)
             binding.categoryAdapter = categoryAdapter
             categoryAdapter.itemClick(object: SetOnCategorySelected{
-                override fun categorySelected(category: String) {
-                    filterByCategory(category)
+                override fun categorySelected(category: Int) {
+                    filterByCategory(getString(category))
                 }
             })
 

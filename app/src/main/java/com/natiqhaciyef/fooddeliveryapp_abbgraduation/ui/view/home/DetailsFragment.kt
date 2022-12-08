@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +20,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentDetailsBinding
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,7 +54,10 @@ class DetailsFragment : Fragment() {
             .load("http://kasimadalan.pe.hu/foods/images/${data.foodDetailsObject.image}")
             .into(binding.detailsImageView)
         binding.totalPriceTextDetailsFragment.text =
-            "Total price: ${binding.itemCountTextDetailsFragment.text.toString().toInt() * data.foodDetailsObject.price} $"
+            "Total price: ${
+                binding.itemCountTextDetailsFragment.text.toString()
+                    .toInt() * data.foodDetailsObject.price
+            } $"
 
         binding.itemAddDetailsFragment.setOnClickListener {
             increaseAmount(data.foodDetailsObject)
@@ -63,16 +69,19 @@ class DetailsFragment : Fragment() {
 
         binding.addToCartButtonDetails.setOnClickListener {
             getUserName()
-            val cartOrderModel = CartOrderModel(
-                cartId = 0,
-                name = foodModel.name,
-                image = "${foodModel.image}",
-                price = binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price,
-                category = foodModel.category,
-                orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
-                userName = "Natiq"
+            val list = listOf(
+                CartOrderModel(
+                    cartId = 0,
+                    name = foodModel.name,
+                    image = "${foodModel.image}",
+                    price = binding.itemCountTextDetailsFragment.text.toString()
+                        .toInt() * foodModel.price,
+                    category = foodModel.category,
+                    orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
+                    userName = "Natiq"
+                )
             )
-            viewModel.addToCart(cartOrderModel)
+            viewModel.addToCart(list[0])
         }
     }
 
@@ -80,7 +89,9 @@ class DetailsFragment : Fragment() {
         val count = binding.itemCountTextDetailsFragment.text.toString().toInt()
         binding.itemCountTextDetailsFragment.text = "${count + 1}"
         binding.totalPriceTextDetailsFragment.text =
-            "Total price: ${binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price} $"
+            "Total price: ${
+                binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price
+            } $"
     }
 
     private fun decreaseAmount(foodModel: FoodModel) {
@@ -88,13 +99,16 @@ class DetailsFragment : Fragment() {
         if (count > 1)
             binding.itemCountTextDetailsFragment.text = "${count - 1}"
         binding.totalPriceTextDetailsFragment.text =
-            "Total price: ${binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price} $"
+            "Total price: ${
+                binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price
+            } $"
     }
 
-    private fun getUserName(){
-        firestore.collection("UserNames").document(auth.currentUser!!.uid).addSnapshotListener{value, error ->
-            if (value != null)
-                username += value.get("name") as String
-        }
+    private fun getUserName() {
+        firestore.collection("UserNames").document(auth.currentUser!!.uid)
+            .addSnapshotListener { value, error ->
+                if (value != null)
+                    username += value.get("name") as String
+            }
     }
 }

@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,9 +16,11 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.AlertDialogLayoutBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentCartBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.CartAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.TotalData
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.filterNameText
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +30,7 @@ class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
-    private var list = listOf<CartOrderModel>()
+    private var list = mutableListOf<CartOrderModel>()
     private lateinit var cartAdapter: CartAdapter
     private var username: String = ""
     private val viewModel: CartViewModel by viewModels()
@@ -50,7 +53,8 @@ class CartFragment : Fragment() {
 
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {
-                list = it
+                list = it.toMutableList()
+
                 cartAdapter = CartAdapter(requireContext(), list, viewModel)
                 binding.cartAdapter = cartAdapter
                 binding.cartItemLessText.visibility = View.GONE
@@ -61,17 +65,18 @@ class CartFragment : Fragment() {
             }
         }
 
-        binding.submitAllCartButton.setOnClickListener {view->
+
+        binding.submitAllCartButton.setOnClickListener { view ->
             TotalData.name = list.filterNameText()
             TotalData.totalPrice = sumAllPrice(list)
-            Navigation.findNavController(view).navigate(R.id.paymentFragment)
+            showAlertDialog()
         }
     }
 
-    private fun sumAllPrice(list: List<CartOrderModel>): Int{
+    private fun sumAllPrice(list: List<CartOrderModel>): Int {
         var totalSum = 0
-        if (list.isNotEmpty()){
-            for (element in list){
+        if (list.isNotEmpty()) {
+            for (element in list) {
                 totalSum += element.price
             }
         }
@@ -90,5 +95,27 @@ class CartFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getAllCart("Natiq")
+    }
+
+    private fun showAlertDialog() {
+        val view = AlertDialogLayoutBinding.inflate(layoutInflater)
+        val positiveButton = view.buttonActionPositive
+        val negativeButton = view.buttonActionNegative
+
+        val customAlertDialog = AlertDialog.Builder(requireContext())
+            .setView(view.root)
+            .create()
+
+        positiveButton.setOnClickListener {
+            findNavController().navigate(R.id.paymentFragment)
+            customAlertDialog.cancel()
+        }
+
+        negativeButton.setOnClickListener {
+            findNavController().navigate(R.id.cartFragment)
+            customAlertDialog.cancel()
+        }
+
+        customAlertDialog.show()
     }
 }

@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_homeFragment_to_paymentFragment2"
             app:destination="@id/paymentFragment" />
@@ -28,6 +32,9 @@
         <argument
             android:name="foodDetailsObject"
             app:argType="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel" />
+        <action
+            android:id="@+id/action_detailsFragment_to_cartFragment2"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"

@@ -17,6 +17,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragmentD
 class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>) :
     RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
 
+    private var b = false
     inner class FoodHolder(val binding: RecyclerFoodCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -32,13 +33,21 @@ class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>) :
 
         //http://kasimadalan.pe.hu/foods/images/meatball.png
         itemView.foodModel = food
+        itemView.foodIsLikedButton.setOnClickListener {
+            b = !b
+            if (b)
+                itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_filled)
+            else
+                itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_empty)
+        }
         Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}")
             .into(itemView.foodRecyclerImage)
         holder.itemView.setOnClickListener {
             try {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food)
                 Navigation.findNavController(it).navigate(action)
-            } catch (e: Exception) { }
+            } catch (e: Exception) {
+            }
         }
 
     }
