@@ -28,7 +28,19 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-    <TextView
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textNnN"
+            app:layout_constraintEnd_toEndOf="@+id/textNnN"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@+id/textNnN"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/warning" />
+
+        <TextView
         android:id="@+id/textMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

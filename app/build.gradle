@@ -60,9 +60,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.activity:activity-ktx:1.5.1"
 
-    //Coroutine
-//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-
     //Dagger Hilt
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-android-compiler:2.42"
@@ -88,8 +85,20 @@ dependencies {
 
     //Preferences DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-    // Lifecycle component & Kotlin coroutines components
+
+    //Lifecycle component & Kotlin coroutines components
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    //Animation Library
+    implementation "com.airbnb.android:lottie:5.2.0"
+
+    //Room db
+    implementation "androidx.room:room-runtime:2.5.0-beta02"
+    kapt "androidx.room:room-compiler:2.5.0-beta02"
+
+    //Coroutine
+    implementation "androidx.room:room-ktx:2.4.3"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 }

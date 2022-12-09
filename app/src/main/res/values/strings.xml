@@ -22,6 +22,17 @@
     <string name="cart_is_empty_text">Cart is empty</string>
     <string name="categories">Categories</string>
     <string name="best_meals">Best Meals</string>
+    <string name="home">Home</string>
+    <string name="go_to_cart">Go to cart</string>
+    <string name="wallet">Wallet</string>
+    <string name="saved_foods">Saved Foods</string>
+    <string name="log_out">Log out</string>
+
+    <string name="all_category">All</string>
+    <string name="meal_category">Meals</string>
+    <string name="dessert_category">Desserts</string>
+    <string name="drink_category">Drinks</string>
+    <string name="liked_food_text">You haven\'t liked any food yet</string>
 
 
 </resources>

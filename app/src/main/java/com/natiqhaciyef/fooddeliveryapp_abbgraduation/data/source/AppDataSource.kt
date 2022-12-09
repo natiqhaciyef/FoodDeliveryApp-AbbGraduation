@@ -3,12 +3,12 @@ package com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.source
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.CartOrderModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.network.FoodApi
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.room.FoodDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AppDataSource(var api: FoodApi) {
-
+class AppDataSource(var api: FoodApi, var dao: FoodDao) {
     suspend fun getAllFood(): List<FoodModel> =
         withContext(Dispatchers.IO) {
             api.getAllFood().foods
@@ -36,4 +36,12 @@ class AppDataSource(var api: FoodApi) {
         orderAmount = orderAmount,
         userName = userName
     )
+
+    suspend fun loadFoodModelFromDb() = withContext(Dispatchers.IO){
+        dao.loadFoodModelFromDb()
+    }
+
+    suspend fun saveFoodModel(foodModel: FoodModel) = dao.saveData(foodModel)
+
+    suspend fun deleteFoodModel(foodModel: FoodModel) = dao.deleteData(foodModel)
 }

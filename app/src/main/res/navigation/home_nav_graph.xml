@@ -12,13 +12,20 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_homeFragment_to_paymentFragment2"
             app:destination="@id/paymentFragment" />
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_likedFoodsFragment"
+            app:destination="@id/likedFoodsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -28,6 +35,9 @@
         <argument
             android:name="foodDetailsObject"
             app:argType="com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel" />
+        <action
+            android:id="@+id/action_detailsFragment_to_cartFragment2"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
@@ -46,4 +56,8 @@
             android:id="@+id/action_cartFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/likedFoodsFragment"
+        android:name="com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.LikedFoodsFragment"
+        android:label="LikedFoodsFragment" />
 </navigation>

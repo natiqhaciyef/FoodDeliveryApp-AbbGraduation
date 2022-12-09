@@ -6,32 +6,32 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/homeFragment"
-            android:title="Home"
+            android:title="@string/home"
             android:icon="@drawable/home_icon"
             />
 
         <item
             android:id="@+id/cartFragment"
-            android:title="Go to cart"
+            android:title="@string/go_to_cart"
             android:icon="@drawable/cart_icon"
             />
 
         <item
             android:id="@+id/paymentFragment"
-            android:title="Wallet"
+            android:title="@string/wallet"
             android:icon="@drawable/card_wallet_icon"
             />
 
         <item
-            android:id="@+id/settings"
-            android:title="Settings"
-            android:icon="@drawable/setting_icon"
+            android:id="@+id/savedFoodsFragment"
+            android:title="@string/saved_foods"
+            android:icon="@drawable/saved_icon"
             />
     </group>
 
     <item
-        android:id="@+id/loOut"
-        android:title="Log out"
+        android:id="@+id/logOut"
+        android:title="@string/log_out"
         android:icon="@drawable/log_out_icon"
         />
 

@@ -44,15 +44,15 @@ class HomeFragment : Fragment() {
         viewModel.liveData.observe(viewLifecycleOwner, Observer{
             foodList = it
 
-            foodAdapter = FoodAdapter(requireContext(), foodList)
+            foodAdapter = FoodAdapter(requireContext(), foodList, viewModel)
             binding.foodAdapter = foodAdapter
             binding.foodRecyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
             categoryAdapter = CategoryAdapter(requireContext(), categoryList)
             binding.categoryAdapter = categoryAdapter
             categoryAdapter.itemClick(object: SetOnCategorySelected{
-                override fun categorySelected(category: String) {
-                    filterByCategory(category)
+                override fun categorySelected(category: Int) {
+                    filterByCategory(getString(category))
                 }
             })
 

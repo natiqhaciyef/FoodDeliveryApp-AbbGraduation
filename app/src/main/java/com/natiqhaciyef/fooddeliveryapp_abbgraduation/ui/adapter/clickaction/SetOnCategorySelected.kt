@@ -1,5 +1,5 @@
 package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.clickaction
 
 interface SetOnCategorySelected {
-    fun categorySelected(category: String)
+    fun categorySelected(category: Int)
 }

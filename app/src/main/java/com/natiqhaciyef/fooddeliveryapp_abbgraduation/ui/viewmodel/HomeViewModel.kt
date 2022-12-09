@@ -36,4 +36,16 @@ class HomeViewModel @Inject constructor(var repo: AppRepository)  : ViewModel() 
 
         return customList
     }
+
+    fun saveFoodModelFromDB(foodModel:FoodModel){
+        CoroutineScope(Dispatchers.Main).launch{
+            repo.saveFoodModel(foodModel)
+        }
+    }
+
+    fun deleteFoodModelFromDB(foodModel:FoodModel){
+        CoroutineScope(Dispatchers.Main).launch{
+            repo.deleteFoodModel(foodModel)
+        }
+    }
 }

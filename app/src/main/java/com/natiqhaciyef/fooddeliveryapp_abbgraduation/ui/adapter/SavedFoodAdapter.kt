@@ -2,6 +2,7 @@ package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -10,38 +11,32 @@ import com.bumptech.glide.Glide
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.RecyclerFoodCardBinding
-import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.clickaction.SetOnCategorySelected
-import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragment
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragmentDirections
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.LikedPostsViewModel
 
-class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>, val viewModel: HomeViewModel) :
-    RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
+class SavedFoodAdapter(val mContext: Context, var list: List<FoodModel>, val viewModel: LikedPostsViewModel) :
+    RecyclerView.Adapter<SavedFoodAdapter.SavedFoodHolder>() {
 
-    inner class FoodHolder(val binding: RecyclerFoodCardBinding) :
+    inner class SavedFoodHolder(val binding: RecyclerFoodCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedFoodHolder {
         val binding: RecyclerFoodCardBinding = DataBindingUtil
             .inflate(LayoutInflater.from(mContext), R.layout.recycler_food_card, parent, false)
-        return FoodHolder(binding)
+        return SavedFoodHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FoodHolder, position: Int) {
+    override fun onBindViewHolder(holder: SavedFoodHolder, position: Int) {
         val itemView = holder.binding
         val food = list[position]
-        var b = false
 
+        //http://kasimadalan.pe.hu/foods/images/meatball.png
         itemView.foodModel = food
-        itemView.foodIsLikedButton.setOnClickListener {
-            b = !b
-            if (b) {
-                itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_filled)
-                viewModel.saveFoodModelFromDB(food)
-            }else {
-                itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_empty)
-                viewModel.deleteFoodModelFromDB(food)
-            }
+        itemView.foodIsLikedButton.visibility = View.INVISIBLE
+        itemView.foodIsRemovedButton.visibility = View.VISIBLE
+        itemView.foodIsRemovedButton.setOnClickListener {
+            viewModel.deleteFoodModelFromDB(food)
         }
         Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}")
             .into(itemView.foodRecyclerImage)
@@ -52,13 +47,8 @@ class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>, val v
             } catch (e: Exception) {
             }
         }
-
     }
 
     override fun getItemCount(): Int = list.size
 
-    fun filter(list: MutableList<FoodModel>) {
-        this.list = list
-        notifyDataSetChanged()
-    }
 }
