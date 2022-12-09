@@ -103,6 +103,8 @@ class DetailsFragment : Fragment() {
                 for (el in deletedList) {
                     cartViewModel.deleteCart(el.cartId, "Natiq")
                 }
+
+                findNavController().navigate(R.id.cartFragment)
             }
         }
     }
