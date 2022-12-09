@@ -44,7 +44,7 @@ class CategoryAdapter(
         )
 
         holder.itemView.setOnClickListener {
-            listener?.categorySelected(category.name)
+            listener?.categorySelected(mContext.resources.getString(category.name))
         }
     }
 
