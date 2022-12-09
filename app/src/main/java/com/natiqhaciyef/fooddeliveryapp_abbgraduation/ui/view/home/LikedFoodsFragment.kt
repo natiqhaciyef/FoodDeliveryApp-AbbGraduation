@@ -12,6 +12,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentLikedFoodsBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.FoodAdapter
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.SavedFoodAdapter
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.LikedPostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,9 +35,12 @@ class LikedFoodsFragment : Fragment() {
         binding.likeFoodsFragment = this
         viewModel.savedPosts.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
-                adapter = SavedFoodAdapter(requireContext(), it)
+                adapter = SavedFoodAdapter(requireContext(), it, viewModel)
                 binding.adapter = adapter
                 binding.recyclerSavedFoods.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            }else{
+                binding.saveItemLessText.visibility = View.VISIBLE
+                binding.recyclerSavedFoods.visibility = View.GONE
             }
         }
     }

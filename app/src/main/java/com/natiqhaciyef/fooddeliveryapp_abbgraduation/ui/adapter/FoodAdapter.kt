@@ -18,7 +18,6 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
 class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>, val viewModel: HomeViewModel) :
     RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
 
-    private var b = false
     inner class FoodHolder(val binding: RecyclerFoodCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -31,17 +30,18 @@ class FoodAdapter(val mContext: Context, var list: MutableList<FoodModel>, val v
     override fun onBindViewHolder(holder: FoodHolder, position: Int) {
         val itemView = holder.binding
         val food = list[position]
+        var b = false
 
         itemView.foodModel = food
         itemView.foodIsLikedButton.setOnClickListener {
+            b = !b
             if (b) {
                 itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_filled)
-                viewModel.saveFoodModel(food)
+                viewModel.saveFoodModelFromDB(food)
             }else {
                 itemView.foodIsLikedButton.setImageResource(R.drawable.like_button_empty)
-                viewModel.deleteFoodModel(food)
+                viewModel.deleteFoodModelFromDB(food)
             }
-            b = !b
         }
         Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}")
             .into(itemView.foodRecyclerImage)

@@ -12,8 +12,10 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.R
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.data.model.FoodModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.RecyclerFoodCardBinding
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home.HomeFragmentDirections
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
+import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.LikedPostsViewModel
 
-class SavedFoodAdapter(val mContext: Context, var list: List<FoodModel>) :
+class SavedFoodAdapter(val mContext: Context, var list: List<FoodModel>, val viewModel: LikedPostsViewModel) :
     RecyclerView.Adapter<SavedFoodAdapter.SavedFoodHolder>() {
 
     inner class SavedFoodHolder(val binding: RecyclerFoodCardBinding) :
@@ -32,6 +34,10 @@ class SavedFoodAdapter(val mContext: Context, var list: List<FoodModel>) :
         //http://kasimadalan.pe.hu/foods/images/meatball.png
         itemView.foodModel = food
         itemView.foodIsLikedButton.visibility = View.INVISIBLE
+        itemView.foodIsRemovedButton.visibility = View.VISIBLE
+        itemView.foodIsRemovedButton.setOnClickListener {
+            viewModel.deleteFoodModelFromDB(food)
+        }
         Glide.with(mContext).load("http://kasimadalan.pe.hu/foods/images/${food.image}")
             .into(itemView.foodRecyclerImage)
         holder.itemView.setOnClickListener {

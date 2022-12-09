@@ -32,5 +32,6 @@
     <string name="meal_category">Yeməklər</string>
     <string name="dessert_category">Şirniyyatlar</string>
     <string name="drink_category">İçkilər</string>
+    <string name="liked_food_text">Heç bir yemək seçilməyib</string>
 
 </resources>
