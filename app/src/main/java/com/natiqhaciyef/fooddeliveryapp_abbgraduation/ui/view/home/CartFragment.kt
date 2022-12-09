@@ -54,7 +54,6 @@ class CartFragment : Fragment() {
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {
                 list = it.toMutableList()
-
                 cartAdapter = CartAdapter(requireContext(), list, viewModel)
                 binding.cartAdapter = cartAdapter
                 binding.cartItemLessText.visibility = View.GONE

@@ -25,4 +25,11 @@ class LikedPostsViewModel @Inject constructor(
             savedPosts.value = repo.loadFoodModelFromDB()
         }
     }
+
+    fun deleteFoodModelFromDB(foodModel:FoodModel){
+        CoroutineScope(Dispatchers.Main).launch{
+            repo.deleteFoodModel(foodModel)
+            loadSavedFoods()
+        }
+    }
 }

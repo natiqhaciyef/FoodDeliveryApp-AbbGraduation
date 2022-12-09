@@ -32,6 +32,7 @@
     <string name="meal_category">Meals</string>
     <string name="dessert_category">Desserts</string>
     <string name="drink_category">Drinks</string>
+    <string name="liked_food_text">You haven\'t liked any food yet</string>
 
 
 </resources>

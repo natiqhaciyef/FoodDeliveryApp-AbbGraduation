@@ -31,6 +31,10 @@ class DetailsFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private var username: String = ""
     private val viewModel: DetailsViewModel by viewModels()
+    private val cartViewModel: CartViewModel by viewModels()
+    private val deletedList = mutableListOf<CartOrderModel>()
+    private var observeList = listOf<CartOrderModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,10 +50,10 @@ class DetailsFragment : Fragment() {
         val data: DetailsFragmentArgs by navArgs()
         auth = Firebase.auth
         firestore = Firebase.firestore
-
         binding.detailsFragment = this
         val foodModel = data.foodDetailsObject
         binding.foodModel = foodModel
+
         Glide.with(requireContext())
             .load("http://kasimadalan.pe.hu/foods/images/${data.foodDetailsObject.image}")
             .into(binding.detailsImageView)
@@ -67,21 +71,39 @@ class DetailsFragment : Fragment() {
             decreaseAmount(data.foodDetailsObject)
         }
 
-        binding.addToCartButtonDetails.setOnClickListener {
-            getUserName()
-            val list = listOf(
-                CartOrderModel(
-                    cartId = 0,
-                    name = foodModel.name,
-                    image = "${foodModel.image}",
-                    price = binding.itemCountTextDetailsFragment.text.toString()
-                        .toInt() * foodModel.price,
-                    category = foodModel.category,
-                    orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
-                    userName = "Natiq"
+        cartViewModel.getAllCart("Natiq")
+        cartViewModel.cartLiveData.observe(viewLifecycleOwner) {
+            observeList = it
+            binding.addToCartButtonDetails.setOnClickListener { view ->
+                getUserName()
+                val list = listOf(
+                    CartOrderModel(
+                        cartId = 0,
+                        name = binding.mealNameTextDetailsFragment.text.toString(),
+                        image = "${foodModel.image}",
+                        price = binding.itemCountTextDetailsFragment.text.toString()
+                            .toInt() * foodModel.price,
+                        category = foodModel.category,
+                        orderAmount = binding.itemCountTextDetailsFragment.text.toString().toInt(),
+                        userName = "Natiq"
+                    )
                 )
-            )
-            viewModel.addToCart(list[0])
+
+                for (element in observeList) {
+                    // eyni add olani tapmaq
+                    if (element.name == list[0].name) {
+                        list[0].price += element.price
+                        list[0].orderAmount += element.orderAmount
+
+                        deletedList.add(element)
+                    }
+                }
+                viewModel.addToCart(list[0])
+
+                for (el in deletedList) {
+                    cartViewModel.deleteCart(el.cartId, "Natiq")
+                }
+            }
         }
     }
 

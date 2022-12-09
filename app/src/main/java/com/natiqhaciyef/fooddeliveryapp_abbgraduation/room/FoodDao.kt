@@ -8,7 +8,7 @@ interface FoodDao {
     @Query("SELECT * FROM food_model")
     suspend fun loadFoodModelFromDb():List<FoodModel>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveData(foodModel: FoodModel)
 
     @Delete
