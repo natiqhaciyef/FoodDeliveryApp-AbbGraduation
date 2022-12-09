@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(var repo: AppRepository)  : ViewModel() {
+class HomeViewModel @Inject constructor(var repo: AppRepository) : ViewModel() {
     val liveData = MutableLiveData<MutableList<FoodModel>>()
 
     init {
         getAllFoods()
     }
 
-    fun getAllFoods(){
+    fun getAllFoods() {
         CoroutineScope(Dispatchers.Main).launch {
             liveData.value = repo.getAllFood().toMutableList()
         }
@@ -26,25 +26,38 @@ class HomeViewModel @Inject constructor(var repo: AppRepository)  : ViewModel() 
 
     fun categoryFilter(category: String, list: MutableList<FoodModel>): MutableList<FoodModel> {
         var customList = mutableListOf<FoodModel>()
-        if (category.lowercase() == "all" || category.isEmpty() || category.lowercase() == ""){
+        if (category.lowercase() != "all" && !category.isEmpty() && category.lowercase() != "" && category.lowercase() != "bütün") {
+            if (category.lowercase() == "meals" || category.lowercase() == "yeməklər") {
+                for (element in list) {
+                    if (element.category.lowercase() == "meals")
+                        customList.add(element)
+                }
+            } else if (category.lowercase() == "desserts" || category.lowercase() == "şirniyyatlar") {
+                for (element in list) {
+                    if (element.category.lowercase() == "desserts")
+                        customList.add(element)
+                }
+            } else if (category.lowercase() == "drinks" || category.lowercase() == "içkilər") {
+                for (element in list) {
+                    if (element.category.lowercase() == "drinks")
+                        customList.add(element)
+                }
+            }
+        } else {
             customList = list
-        }else{
-            customList = list.filter {
-                it.category.lowercase() == category.lowercase()
-            } as MutableList<FoodModel>
         }
 
         return customList
     }
 
-    fun saveFoodModelFromDB(foodModel:FoodModel){
-        CoroutineScope(Dispatchers.Main).launch{
+    fun saveFoodModelFromDB(foodModel: FoodModel) {
+        CoroutineScope(Dispatchers.Main).launch {
             repo.saveFoodModel(foodModel)
         }
     }
 
-    fun deleteFoodModelFromDB(foodModel:FoodModel){
-        CoroutineScope(Dispatchers.Main).launch{
+    fun deleteFoodModelFromDB(foodModel: FoodModel) {
+        CoroutineScope(Dispatchers.Main).launch {
             repo.deleteFoodModel(foodModel)
         }
     }
