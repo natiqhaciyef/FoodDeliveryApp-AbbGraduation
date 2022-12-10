@@ -44,8 +44,7 @@ class SavedFoodAdapter(val mContext: Context, var list: List<FoodModel>, val vie
             try {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(food)
                 Navigation.findNavController(it).navigate(action)
-            } catch (e: Exception) {
-            }
+            } catch (_: Exception) {}
         }
     }
 
