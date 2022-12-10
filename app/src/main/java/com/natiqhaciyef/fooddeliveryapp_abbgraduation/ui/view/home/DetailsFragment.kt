@@ -23,13 +23,13 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.databinding.FragmentDetail
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.CartViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-    private var username: String = ""
     private val viewModel: DetailsViewModel by viewModels()
     private val cartViewModel: CartViewModel by viewModels()
     private val deletedList = mutableListOf<CartOrderModel>()
@@ -53,7 +53,7 @@ class DetailsFragment : Fragment() {
         binding.detailsFragment = this
         val foodModel = data.foodDetailsObject
         binding.foodModel = foodModel
-
+        (activity as MainActivity).toolbarInclude.visibility = View.GONE
         Glide.with(requireContext())
             .load("http://kasimadalan.pe.hu/foods/images/${data.foodDetailsObject.image}")
             .into(binding.detailsImageView)
@@ -75,7 +75,6 @@ class DetailsFragment : Fragment() {
         cartViewModel.cartLiveData.observe(viewLifecycleOwner) {
             observeList = it
             binding.addToCartButtonDetails.setOnClickListener { view ->
-                getUserName()
                 val list = listOf(
                     CartOrderModel(
                         cartId = 0,
@@ -126,13 +125,5 @@ class DetailsFragment : Fragment() {
             "Total price: ${
                 binding.itemCountTextDetailsFragment.text.toString().toInt() * foodModel.price
             } $"
-    }
-
-    private fun getUserName() {
-        firestore.collection("UserNames").document(auth.currentUser!!.uid)
-            .addSnapshotListener { value, error ->
-                if (value != null)
-                    username += value.get("name") as String
-            }
     }
 }

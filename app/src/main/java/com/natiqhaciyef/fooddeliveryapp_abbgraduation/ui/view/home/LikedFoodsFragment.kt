@@ -15,6 +15,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.SavedFoodAdapte
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.LikedPostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class LikedFoodsFragment : Fragment() {
@@ -33,6 +34,8 @@ class LikedFoodsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.likeFoodsFragment = this
+
+        (activity as MainActivity).toolbarInclude.visibility = View.GONE
         viewModel.savedPosts.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
                 adapter = SavedFoodAdapter(requireContext(), it, viewModel)

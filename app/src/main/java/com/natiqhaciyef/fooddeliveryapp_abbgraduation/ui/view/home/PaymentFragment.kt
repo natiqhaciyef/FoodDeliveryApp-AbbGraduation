@@ -16,6 +16,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.PaymentList
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.TotalData
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.filterInt
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
@@ -34,7 +35,7 @@ class PaymentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.paymentFragment = this
         binding.lastBalance = LastBalance.lastBalance.toString()
-
+        (activity as MainActivity).toolbarInclude.visibility = View.GONE
         if (TotalData.totalPrice != 0) {
             PaymentList.list.add(PaymentModel(TotalData.name, TotalData.totalPrice))
             val count = LastBalance.lastBalance - TotalData.totalPrice

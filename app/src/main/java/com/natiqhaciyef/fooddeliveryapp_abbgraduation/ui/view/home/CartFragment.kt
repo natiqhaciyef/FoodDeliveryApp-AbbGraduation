@@ -24,6 +24,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.DetailsViewMo
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.TotalData
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.filterNameText
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class CartFragment : Fragment() {
@@ -32,7 +33,6 @@ class CartFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var list = mutableListOf<CartOrderModel>()
     private lateinit var cartAdapter: CartAdapter
-    private var username: String = ""
     private val viewModel: CartViewModel by viewModels()
 
     override fun onCreateView(
@@ -49,7 +49,8 @@ class CartFragment : Fragment() {
         binding.cartFragment = this
         auth = Firebase.auth
         firestore = Firebase.firestore
-        getUserName()
+
+        (activity as MainActivity).toolbarInclude.visibility = View.GONE
 
         viewModel.cartLiveData.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()) {
@@ -82,14 +83,7 @@ class CartFragment : Fragment() {
         return totalSum
     }
 
-    private fun getUserName() {
-        firestore.collection("UserNames").document(auth.currentUser!!.uid)
-            .addSnapshotListener { value, error ->
-                if (value != null) {
-                    username += value.get("name") as String
-                }
-            }
-    }
+
 
     override fun onResume() {
         super.onResume()

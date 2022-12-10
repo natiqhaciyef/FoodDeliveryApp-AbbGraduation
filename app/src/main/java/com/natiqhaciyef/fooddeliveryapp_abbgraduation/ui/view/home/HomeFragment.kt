@@ -19,6 +19,7 @@ import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.adapter.clickaction.Set
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.viewmodel.HomeViewModel
 import com.natiqhaciyef.fooddeliveryapp_abbgraduation.util.CategoryList
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 @AndroidEntryPoint
@@ -41,6 +42,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.homeFragment = this
+
+        (activity as MainActivity).toolbarInclude.visibility = View.VISIBLE
+
         viewModel.liveData.observe(viewLifecycleOwner, Observer{
             foodList = it
 

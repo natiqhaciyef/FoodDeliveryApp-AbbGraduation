@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupWithNavController(binding.navView, navHostFragment.navController)
 
         val toogle = ActionBarDrawerToggle(this, binding.drawerLayout, toolbar, 0, 0)
-        toogle.drawerArrowDrawable.color = this.getColor(R.color.mainWhite)
+        toogle.drawerArrowDrawable.color = this.getColor(R.color.mainBlack)
         binding.drawerLayout.addDrawerListener(toogle)
         toogle.isDrawerIndicatorEnabled = true
         toogle.syncState()
