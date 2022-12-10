@@ -33,6 +33,10 @@
     <string name="dessert_category">Desserts</string>
     <string name="drink_category">Drinks</string>
     <string name="liked_food_text">You haven\'t liked any food yet</string>
+    <string name="balance_check">Do you want to watch the balance ?</string>
+    <string name="log_out_text_from_account">Do you want to log out ?</string>
+    <string name="yes_option">Yes</string>
+    <string name="no_option">No</string>
 
 
 </resources>

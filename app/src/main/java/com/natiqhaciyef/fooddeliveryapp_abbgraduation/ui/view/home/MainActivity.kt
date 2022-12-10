@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun showAlertDialog() {
         val view = AlertDialogLayoutBinding.inflate(layoutInflater)
+        view.textMessage.text = this.resources.getString(R.string.log_out_text_from_account)
         val positiveButton = view.buttonActionPositive
         val negativeButton = view.buttonActionNegative
 

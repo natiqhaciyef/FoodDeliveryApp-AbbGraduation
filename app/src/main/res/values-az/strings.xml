@@ -33,5 +33,8 @@
     <string name="dessert_category">Şirniyyatlar</string>
     <string name="drink_category">Içkilər</string>
     <string name="liked_food_text">Heç bir yemək seçilməyib</string>
-
+    <string name="balance_check">Balansınızı görüntüləmək istəyirsinizmi ?</string>
+    <string name="log_out_text_from_account">Çıxış etmək istədiyinizdən əminsiniz ?</string>
+    <string name="yes_option">Bəli</string>
+    <string name="no_option">Xeyr</string>
 </resources>

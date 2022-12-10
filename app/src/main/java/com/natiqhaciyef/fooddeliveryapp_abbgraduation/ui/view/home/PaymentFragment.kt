@@ -49,9 +49,4 @@ class PaymentFragment : Fragment() {
         binding.adapter = PaymentAdapter(requireContext(), PaymentList.list.reversed())
 
     }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
 }
