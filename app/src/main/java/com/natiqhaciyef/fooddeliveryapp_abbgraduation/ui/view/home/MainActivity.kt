@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupWithNavController(binding.navView, navHostFragment.navController)
 
         val toogle = ActionBarDrawerToggle(this, binding.drawerLayout, toolbar, 0, 0)
-        toogle.drawerArrowDrawable.color = this.getColor(R.color.mainWhite)
+        toogle.drawerArrowDrawable.color = this.getColor(R.color.mainBlack)
         binding.drawerLayout.addDrawerListener(toogle)
         toogle.isDrawerIndicatorEnabled = true
         toogle.syncState()
@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun showAlertDialog() {
         val view = AlertDialogLayoutBinding.inflate(layoutInflater)
+        view.textMessage.text = this.resources.getString(R.string.log_out_text_from_account)
         val positiveButton = view.buttonActionPositive
         val negativeButton = view.buttonActionNegative
 

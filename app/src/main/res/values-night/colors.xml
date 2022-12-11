@@ -10,7 +10,7 @@
     
     <!--Custom colors-->
     <color name="mainBlue">#009DE0</color>
-    <color name="mainBlue_light">#F300E0E0</color>
+    <color name="mainBlue_light">#F30F6565</color>
     <color name="mainRed">#f55a51</color>
     <color name="mainBlack">#FFFFFFFF</color>
     <color name="mainGray">#7E7E7E</color>
@@ -24,7 +24,10 @@
     <color name="mainOrange_dark">#D86603</color>
     <color name="mainOrange_light">#F2F3A736</color>
     <color name="mainOrange_extra_light">#F2FDC36D</color>
+    <color name="mainOrange_extra_light2">#F25C4018</color>
     <color name="mainGreen">#1FBA04</color>
-    <color name="mainBackground">#106A6A</color>
+    <color name="mainBackground">#B67018</color>
+    <color name="mainWhite_Dark2">#FFFFFF</color>
+
 
 </resources>

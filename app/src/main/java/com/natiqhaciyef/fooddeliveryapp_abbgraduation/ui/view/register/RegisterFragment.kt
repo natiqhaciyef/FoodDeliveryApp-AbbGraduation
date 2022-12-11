@@ -61,7 +61,7 @@ class RegisterFragment : Fragment() {
         auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
             val usernames = hashMapOf<String, String>()
             usernames["name"] = username
-            firestore.collection("UserNames").document(auth.currentUser!!.uid).set(usernames).addOnSuccessListener {
+            firestore.collection("UserNames").document(auth.currentUser!!.email.toString()).set(usernames).addOnSuccessListener {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
                 startActivity(intent)
             }

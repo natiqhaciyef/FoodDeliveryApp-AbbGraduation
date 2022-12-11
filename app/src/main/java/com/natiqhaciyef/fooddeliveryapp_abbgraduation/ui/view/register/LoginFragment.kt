@@ -40,6 +40,10 @@ class LoginFragment : Fragment() {
         binding.goToRegister.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.registerFragment)
         }
+
+        binding.goToForgotPassword.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.forgotPasswordFragment)
+        }
     }
 
     private fun loginButtonAction(email: String, password: String){

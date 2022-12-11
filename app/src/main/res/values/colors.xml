@@ -21,6 +21,7 @@
     <color name="mainWhite">#FFFFFF</color>
     <color name="mainSilver_card">#E6E6E6</color>
     <color name="mainWhite_Dark">#FFFFFF</color>
+    <color name="mainWhite_Dark2">#AEAEAE</color>
     <color name="mainBrown_light">#FDDBC6</color>
     <color name="mainYellowBrown_light">#FFDEC9</color>
     <color name="mainBrown">#F3B382</color>
@@ -29,6 +30,7 @@
     <color name="mainOrange_dark">#D86603</color>
     <color name="mainOrange_light">#F2F3A736</color>
     <color name="mainOrange_extra_light">#F2FDC36D</color>
+    <color name="mainOrange_extra_light2">#F2EFE4D3</color>
     <color name="mainGreen">#1FBA04</color>
     <color name="mainBackground">#E0EFEF</color>
 
