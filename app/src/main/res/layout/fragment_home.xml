@@ -29,19 +29,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/searchBarHomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/custom_input_search"
+            android:drawableEnd="@drawable/search_icon"
+            android:hint="Search Food"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesRecyclerView"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <TextView
             android:id="@+id/chooseHotOrdersText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/best_meals"
-            android:textSize="21sp"
-            android:textColor="@color/mainBlack"
-            android:textStyle="bold"
             android:padding="5dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/best_meals"
+            android:textColor="@color/mainBlack"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoriesRecyclerView"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/searchBarHomeFragment"
+            tools:layout_editor_absoluteY="199dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodRecyclerView"

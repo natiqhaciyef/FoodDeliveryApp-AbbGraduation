@@ -27,5 +27,7 @@
     <color name="mainOrange_extra_light2">#F25C4018</color>
     <color name="mainGreen">#1FBA04</color>
     <color name="mainBackground">#B67018</color>
+    <color name="mainWhite_Dark2">#FFFFFF</color>
+
 
 </resources>
