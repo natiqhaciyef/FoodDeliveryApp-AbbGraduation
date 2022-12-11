@@ -29,17 +29,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <android.widget.SearchView
             android:id="@+id/searchBarHomeFragment"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="35dp"
+            android:queryHint="Search food"
+            android:iconifiedByDefault="false"
             android:background="@drawable/custom_input_search"
             android:drawableEnd="@drawable/search_icon"
-            android:hint="Search Food"
             android:paddingStart="10dp"
+            android:searchIcon="@drawable/search_icon"
             android:paddingEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
