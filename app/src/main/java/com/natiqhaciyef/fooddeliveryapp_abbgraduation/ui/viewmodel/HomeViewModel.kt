@@ -50,6 +50,16 @@ class HomeViewModel @Inject constructor(var repo: AppRepository) : ViewModel() {
         return customList
     }
 
+
+    fun filterByName(name: String,list: MutableList<FoodModel>): MutableList<FoodModel>{
+        val customList = mutableListOf<FoodModel>()
+        for (element in list){
+            if (element.name.lowercase().contains(name.lowercase()))
+                customList.add(element)
+        }
+        return customList
+    }
+
     fun saveFoodModelFromDB(foodModel: FoodModel) {
         CoroutineScope(Dispatchers.Main).launch {
             repo.saveFoodModel(foodModel)

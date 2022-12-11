@@ -1,10 +1,13 @@
 package com.natiqhaciyef.fooddeliveryapp_abbgraduation.ui.view.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -45,7 +48,7 @@ class HomeFragment : Fragment() {
 
         (activity as MainActivity).toolbarInclude.visibility = View.VISIBLE
 
-        viewModel.liveData.observe(viewLifecycleOwner, Observer{
+        viewModel.liveData.observe(viewLifecycleOwner,){
             foodList = it
 
             foodAdapter = FoodAdapter(requireContext(), foodList, viewModel)
@@ -61,6 +64,18 @@ class HomeFragment : Fragment() {
             })
 
             binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        }
+
+        binding.searchBarHomeFragment.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { filterByName(newText.lowercase()) }
+                return false
+            }
+
         })
     }
 
@@ -80,5 +95,13 @@ class HomeFragment : Fragment() {
         if (list.isNotEmpty()){
             foodAdapter.filter(list)
         }
+    }
+
+    fun filterByName(name: String){
+        val list = viewModel.filterByName(name, foodList)
+        if (list.isEmpty())
+            Toast.makeText(requireContext(), "Post not found...", Toast.LENGTH_LONG).show()
+        else
+            foodAdapter.filter(list)
     }
 }
