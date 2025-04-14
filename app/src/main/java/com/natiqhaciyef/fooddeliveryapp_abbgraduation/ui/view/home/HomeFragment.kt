@@ -34,6 +34,8 @@ class HomeFragment : Fragment() {
     private lateinit var foodAdapter: FoodAdapter
     private lateinit var viewModel: HomeViewModel
 
+    //@{() -> theMethod.invoke(someInt)}
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {

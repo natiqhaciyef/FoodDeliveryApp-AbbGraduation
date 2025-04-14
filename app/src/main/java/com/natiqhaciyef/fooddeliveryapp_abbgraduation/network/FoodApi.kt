@@ -11,6 +11,7 @@ interface FoodApi {
     //http://kasimadalan.pe.hu/foods/insertFood.php
     //http://kasimadalan.pe.hu/foods/getFoodsCart.php
     //http://kasimadalan.pe.hu/foods/deleteFood.php
+    //http://techtive.tech/clothes_table/getAllFoods.php
 
     @GET("foods/getAllFoods.php")
     suspend fun getAllFood(): FoodResponse
